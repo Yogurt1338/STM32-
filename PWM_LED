@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#define Default 60				// якрость по умолчанию
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -38,8 +39,8 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
-  short int CCR = 75;                             // яркость по умолчанию
-  short int D_CCR = 75;
+  short int CCR = Default;                             // яркость по умолчанию
+  short int D_CCR = Default;
   short int CCRR = 0;                             // разряд для яркости
   char CCRS[128] = {0};							  // буфер для вывода значения яркости
 
@@ -103,7 +104,7 @@ int UA(void)
 		  CCR = D_CCR ;
 		  printf("Input error - brightness is set to default\r\n");
 	  }
-	  sprintf (CCRS,"bright is %d", CCR); 			// кладем в строку значение якрости
+	  sprintf (CCRS,"bright is %d%%", CCR); 			// кладем в строку значение якрости
 	  printf ("%s\r\n",CCRS);						// вывод значения
 	  return CCR;									// вернули для ШИМ
 	}
@@ -150,7 +151,7 @@ int main(void)
   printf ("ver 1.0\r\n");
   printf ("____________________________________________________________\r\n\r\n");
   printf ("Enter brightness value ( 00-99 )\r\n");
-  printf ("Default bright is 75\r\n");
+  printf ("Default bright is %d%% \r\n", CCR);
 
 
 
